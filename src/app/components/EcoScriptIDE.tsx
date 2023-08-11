@@ -1,9 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
-'use client'
+"use client";
 import React, { useState, useEffect } from "react";
-import Terminal from "terminal-in-react";
+// import Terminal from "terminal-in-react";
+import TerminalController from "./terminalui";
 import AceEditor from "react-ace";
-import "ace-builds/src-noconflict/mode-python"; 
+import "ace-builds/src-noconflict/mode-python";
 import "ace-builds/src-noconflict/theme-monokai";
 import {
   Box,
@@ -20,11 +21,11 @@ import {
 } from "@chakra-ui/react";
 import axios from "axios";
 // import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic";
 const SyntaxHighlighter = dynamic(
-    () => import('react-syntax-highlighter').then((mod) => mod.Light),
-    { loading: () => <div>Loading code...</div>,ssr: false }
-  );
+  () => import("react-syntax-highlighter").then((mod) => mod.Light),
+  { loading: () => <div>Loading code...</div>, ssr: false }
+);
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiOutlineClear } from "react-icons/ai";
 const EcoScriptIDE: React.FC = () => {
@@ -35,9 +36,12 @@ const EcoScriptIDE: React.FC = () => {
 
   const handleRunCode = async () => {
     try {
-      const response = await axios.post("https://ecoscript-compiler.vercel.app/compile/", {
-        code,
-      });
+      const response = await axios.post(
+        "https://ecoscript-compiler.vercel.app/compile/",
+        {
+          code,
+        }
+      );
       setOutput(response.data);
       console.log(response.data);
       return response.data; // Return the output
@@ -87,40 +91,41 @@ const EcoScriptIDE: React.FC = () => {
           <>
             {isTerminalLoaded ? (
               <Box
-                borderRadius="20px" // Add border radius here
+                borderRadius="20px"
                 overflow="hidden"
                 //   h="400px"
                 resize="vertical"
                 //   maxH="400px"
                 //   minH="100px"
               >
-                <Terminal
+                <TerminalController />
+                {/* <Terminal
                   color="green"
                   backgroundColor="black"
                   barColor="black"
                   style={{ fontWeight: "bold", fontSize: "1em" }}
                   msg="Welcome to the EcoScript Interactive Development Environment (IDE)."
-                  // commandPassThrough={async (cmd: string, print: () => void) => {
-                  //   const command = Array.isArray(cmd) ? cmd.join(" ") : cmd; // Convert the command array to a string
+                  commandPassThrough={async (cmd: string, print: () => void) => {
+                    const command = Array.isArray(cmd) ? cmd.join(" ") : cmd; // Convert the command array to a string
 
-                  //   try {
-                  //     const response = await axios.post(
-                  //       "https://ecoscript-compiler.vercel.app/compile/",
-                  //       {
-                  //         code: command, // Fix the payload by using the proper key name
-                  //       }
-                  //     );
+                    try {
+                      const response = await axios.post(
+                        "https://ecoscript-compiler.vercel.app/compile/",
+                        {
+                          code: command, // Fix the payload by using the proper key name
+                        }
+                      );
 
-                  //     const output2 = response.data;
-                  //     // @ts-ignore
-                  //     print(output2); 
+                      const output2 = response.data;
+                      // @ts-ignore
+                      print(output2); 
                       
-                  //   } catch (error) {
-                  //      // @ts-ignore
-                  //     print(`Error executing command: ${error}`);
-                  //   }
-                  // }}
-                />
+                    } catch (error) {
+                       // @ts-ignore
+                      print(`Error executing command: ${error}`);
+                    }
+                  }}
+                /> */}
               </Box>
             ) : (
               <Spinner color="blue.500" />
@@ -128,14 +133,19 @@ const EcoScriptIDE: React.FC = () => {
           </>
         ) : (
           <>
-            <AceEditor
-              mode="python"
-              theme="monokai"
-              value={code}
-              onChange={setCode}
-              name="EcoScriptEditor"
-              editorProps={{ $blockScrolling: true }}
-            />
+           <Box overflow="hidden" borderRadius="20px" style={{ backgroundColor: '#252A33' }} >
+  <AceEditor
+    mode="python"
+    theme="monokai"
+    value={code}
+    onChange={setCode}
+    name="EcoScriptEditor"
+    editorProps={{ $blockScrolling: true }}
+    fontSize={18} 
+    style={{ fontWeight: "bold", height: "600px",width:"50vw",backgroundColor: '#252A33' }}
+  />
+</Box>
+
             <Center>
               <Button colorScheme="teal" onClick={handleRunCode} mr={6}>
                 Run Code
@@ -179,7 +189,6 @@ const EcoScriptIDE: React.FC = () => {
           <Box mt={4} borderRadius="10px">
             <Box borderRadius="10px" overflow="hidden" mt="3">
               <SyntaxHighlighter language="python" style={atomOneDark}>
-              
                 {"x := 10;\ny := 20;\nz := x + y;\nPRINT(z);"}
               </SyntaxHighlighter>
             </Box>
