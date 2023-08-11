@@ -2,9 +2,9 @@
 'use client'
 import React, { useState, useEffect } from "react";
 import Terminal from "terminal-in-react";
-import AceEditor from "react-ace";
-import "ace-builds/src-noconflict/mode-python"; 
-import "ace-builds/src-noconflict/theme-monokai";
+// import AceEditor from "react-ace";
+// import "ace-builds/src-noconflict/mode-python"; 
+// import "ace-builds/src-noconflict/theme-monokai";
 import {
   Box,
   Button,
@@ -128,14 +128,14 @@ const EcoScriptIDE: React.FC = () => {
           </>
         ) : (
           <>
-            <AceEditor
+            {/* <AceEditor
               mode="python"
               theme="monokai"
               value={code}
               onChange={setCode}
               name="EcoScriptEditor"
               editorProps={{ $blockScrolling: true }}
-            />
+            /> */}
             <Center>
               <Button colorScheme="teal" onClick={handleRunCode} mr={6}>
                 Run Code
