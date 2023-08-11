@@ -11,13 +11,12 @@ import {
   Button,
   Link,
 } from "@chakra-ui/react";
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
-// import dynamic from 'next/dynamic';
-// const SyntaxHighlighter = dynamic(
-//     () => import('react-syntax-highlighter').then((mod) => mod.Light),
-//     { ssr: false }
-//   );
-
+// import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import dynamic from 'next/dynamic';
+const SyntaxHighlighter = dynamic(
+    () => import('react-syntax-highlighter').then((mod) => mod.Light),
+    { loading: () => <div>Loading code...</div>,ssr: false }
+  );
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { FaGithub, FaArrowLeft } from "react-icons/fa";
 atomOneDark["hljs"] = {

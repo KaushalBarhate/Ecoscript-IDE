@@ -1,8 +1,9 @@
-"use client";
+/* eslint-disable react/no-unescaped-entities */
+'use client'
 import React, { useState, useEffect } from "react";
 import Terminal from "terminal-in-react";
 import AceEditor from "react-ace";
-import "ace-builds/src-noconflict/mode-python"; // You can choose the mode that fits your language
+import "ace-builds/src-noconflict/mode-python"; 
 import "ace-builds/src-noconflict/theme-monokai";
 import {
   Box,
@@ -18,10 +19,14 @@ import {
   Center,
 } from "@chakra-ui/react";
 import axios from "axios";
-import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+// import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
+import dynamic from 'next/dynamic';
+const SyntaxHighlighter = dynamic(
+    () => import('react-syntax-highlighter').then((mod) => mod.Light),
+    { loading: () => <div>Loading code...</div>,ssr: false }
+  );
 import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiOutlineClear } from "react-icons/ai";
-import { FaGithub } from "react-icons/fa";
 const EcoScriptIDE: React.FC = () => {
   const [code, setCode] = useState<string>("#Example\nx:=20;\nPRINT(x*2/10);");
   const [output, setOutput] = useState<string>("");
@@ -174,7 +179,8 @@ const EcoScriptIDE: React.FC = () => {
           <Box mt={4} borderRadius="10px">
             <Box borderRadius="10px" overflow="hidden" mt="3">
               <SyntaxHighlighter language="python" style={atomOneDark}>
-                {`x := 10;\ny := 20;\nz := x + y;\nPRINT(z);`}
+              
+                {"x := 10;\ny := 20;\nz := x + y;\nPRINT(z);"}
               </SyntaxHighlighter>
             </Box>
 
