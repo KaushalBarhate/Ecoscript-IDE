@@ -1,10 +1,10 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client'
 import React, { useState, useEffect } from "react";
-// import Terminal from "terminal-in-react";
-// import AceEditor from "react-ace";
-// import "ace-builds/src-noconflict/mode-python"; 
-// import "ace-builds/src-noconflict/theme-monokai";
+import Terminal from "terminal-in-react";
+import AceEditor from "react-ace";
+import "ace-builds/src-noconflict/mode-python"; 
+import "ace-builds/src-noconflict/theme-monokai";
 import {
   Box,
   Button,
@@ -21,11 +21,11 @@ import {
 import axios from "axios";
 // import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import dynamic from 'next/dynamic';
-// const SyntaxHighlighter = dynamic(
-//     () => import('react-syntax-highlighter').then((mod) => mod.Light),
-//     { loading: () => <div>Loading code...</div>,ssr: false }
-//   );
-// import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+const SyntaxHighlighter = dynamic(
+    () => import('react-syntax-highlighter').then((mod) => mod.Light),
+    { loading: () => <div>Loading code...</div>,ssr: false }
+  );
+import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiOutlineClear } from "react-icons/ai";
 const EcoScriptIDE: React.FC = () => {
   const [code, setCode] = useState<string>("#Example\nx:=20;\nPRINT(x*2/10);");
@@ -94,33 +94,33 @@ const EcoScriptIDE: React.FC = () => {
                 //   maxH="400px"
                 //   minH="100px"
               >
-                {/* <Terminal
+                <Terminal
                   color="green"
                   backgroundColor="black"
                   barColor="black"
                   style={{ fontWeight: "bold", fontSize: "1em" }}
                   msg="Welcome to the EcoScript Interactive Development Environment (IDE)."
-                  commandPassThrough={async (cmd: string, print: () => void) => {
-                    const command = Array.isArray(cmd) ? cmd.join(" ") : cmd; // Convert the command array to a string
+                  // commandPassThrough={async (cmd: string, print: () => void) => {
+                  //   const command = Array.isArray(cmd) ? cmd.join(" ") : cmd; // Convert the command array to a string
 
-                    try {
-                      const response = await axios.post(
-                        "https://ecoscript-compiler.vercel.app/compile/",
-                        {
-                          code: command, // Fix the payload by using the proper key name
-                        }
-                      );
+                  //   try {
+                  //     const response = await axios.post(
+                  //       "https://ecoscript-compiler.vercel.app/compile/",
+                  //       {
+                  //         code: command, // Fix the payload by using the proper key name
+                  //       }
+                  //     );
 
-                      const output2 = response.data;
-                      // @ts-ignore
-                      print(output2); 
+                  //     const output2 = response.data;
+                  //     // @ts-ignore
+                  //     print(output2); 
                       
-                    } catch (error) {
-                       // @ts-ignore
-                      print(`Error executing command: ${error}`);
-                    }
-                  }}
-                /> */}
+                  //   } catch (error) {
+                  //      // @ts-ignore
+                  //     print(`Error executing command: ${error}`);
+                  //   }
+                  // }}
+                />
               </Box>
             ) : (
               <Spinner color="blue.500" />
@@ -128,14 +128,14 @@ const EcoScriptIDE: React.FC = () => {
           </>
         ) : (
           <>
-            {/* <AceEditor
+            <AceEditor
               mode="python"
               theme="monokai"
               value={code}
               onChange={setCode}
               name="EcoScriptEditor"
               editorProps={{ $blockScrolling: true }}
-            /> */}
+            />
             <Center>
               <Button colorScheme="teal" onClick={handleRunCode} mr={6}>
                 Run Code
@@ -170,7 +170,7 @@ const EcoScriptIDE: React.FC = () => {
             ) : null}
           </>
         )}
-        {/* <Box width={["100%", "100%", "100%", "50%"]} mt={4}>
+        <Box width={["100%", "100%", "100%", "50%"]} mt={4}>
           <Center>
             <Heading as="h3" size="md" mt={4} color={textColor}>
               Tutorial:
@@ -196,7 +196,7 @@ const EcoScriptIDE: React.FC = () => {
               </Text>
             </Box>
           </Box>
-        </Box> */}
+        </Box>
 
         <Text fontSize="lg" color={textColor} mt={10}>
           Learn more about EcoScript and its syntax in the{" "}
