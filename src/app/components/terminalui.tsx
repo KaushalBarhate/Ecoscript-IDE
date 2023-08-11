@@ -4,7 +4,7 @@ import axios from 'axios';
 
 const TerminalController: React.FC = () => {
   const [terminalLineData, setTerminalLineData] = useState([
-    <TerminalOutput>Welcome to the EcoScript Interactive Development Environment (IDE).</TerminalOutput>
+    <TerminalOutput key={Math.random().toString(36).substring(2,7)}>Welcome to the EcoScript Interactive Development Environment (IDE).</TerminalOutput>
   ]);
 
   const handleInput = async (terminalInput: string) => {
@@ -12,7 +12,7 @@ const TerminalController: React.FC = () => {
     if (command) {
       setTerminalLineData(prevData => [
         ...prevData,
-        <TerminalOutput>{`> ${command}`}</TerminalOutput>
+        <TerminalOutput key={Math.random().toString(36).substring(2,7)}>{`> ${command}`}</TerminalOutput>
       ]);
       try {
         const response = await axios.post(
@@ -23,13 +23,13 @@ const TerminalController: React.FC = () => {
         const output = response.data;
         setTerminalLineData(prevData => [
           ...prevData,
-          <TerminalOutput>{output}</TerminalOutput>
+          <TerminalOutput key={Math.random().toString(36).substring(2,7)}>{output}</TerminalOutput>
         ]);
       } catch (error) {
         setTerminalLineData(prevData => [
           ...prevData,
           // @ts-ignore
-          <TerminalOutput>Error executing command: {error.message}</TerminalOutput>
+          <TerminalOutput key={Math.random().toString(36).substring(2,7)}>Error executing command: {error.message}</TerminalOutput>
         ]);
       }
     }
