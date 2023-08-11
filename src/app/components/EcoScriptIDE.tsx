@@ -21,11 +21,11 @@ import {
 import axios from "axios";
 // import { Light as SyntaxHighlighter } from "react-syntax-highlighter";
 import dynamic from 'next/dynamic';
-const SyntaxHighlighter = dynamic(
-    () => import('react-syntax-highlighter').then((mod) => mod.Light),
-    { loading: () => <div>Loading code...</div>,ssr: false }
-  );
-import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
+// const SyntaxHighlighter = dynamic(
+//     () => import('react-syntax-highlighter').then((mod) => mod.Light),
+//     { loading: () => <div>Loading code...</div>,ssr: false }
+//   );
+// import { atomOneDark } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { AiOutlineClear } from "react-icons/ai";
 const EcoScriptIDE: React.FC = () => {
   const [code, setCode] = useState<string>("#Example\nx:=20;\nPRINT(x*2/10);");
@@ -170,7 +170,7 @@ const EcoScriptIDE: React.FC = () => {
             ) : null}
           </>
         )}
-        <Box width={["100%", "100%", "100%", "50%"]} mt={4}>
+        {/* <Box width={["100%", "100%", "100%", "50%"]} mt={4}>
           <Center>
             <Heading as="h3" size="md" mt={4} color={textColor}>
               Tutorial:
@@ -196,7 +196,7 @@ const EcoScriptIDE: React.FC = () => {
               </Text>
             </Box>
           </Box>
-        </Box>
+        </Box> */}
 
         <Text fontSize="lg" color={textColor} mt={10}>
           Learn more about EcoScript and its syntax in the{" "}
