@@ -30,7 +30,7 @@ const Documentation: React.FC = () => {
 
   return (
     <Box p={8} backgroundColor="#2D3748" color="white">
-      <a href="/">
+      <a href="/ide">
         <Button
           leftIcon={<FaArrowLeft />}
           variant="ghost"
