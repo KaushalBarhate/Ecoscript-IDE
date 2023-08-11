@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unescaped-entities */
 'use client'
 import React, { useState, useEffect } from "react";
-import Terminal from "terminal-in-react";
+// import Terminal from "terminal-in-react";
 // import AceEditor from "react-ace";
 // import "ace-builds/src-noconflict/mode-python"; 
 // import "ace-builds/src-noconflict/theme-monokai";
@@ -94,7 +94,7 @@ const EcoScriptIDE: React.FC = () => {
                 //   maxH="400px"
                 //   minH="100px"
               >
-                <Terminal
+                {/* <Terminal
                   color="green"
                   backgroundColor="black"
                   barColor="black"
@@ -120,7 +120,7 @@ const EcoScriptIDE: React.FC = () => {
                       print(`Error executing command: ${error}`);
                     }
                   }}
-                />
+                /> */}
               </Box>
             ) : (
               <Spinner color="blue.500" />
