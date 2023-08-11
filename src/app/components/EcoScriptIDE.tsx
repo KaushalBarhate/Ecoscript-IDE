@@ -95,8 +95,8 @@ const EcoScriptIDE: React.FC = () => {
                   barColor="black"
                   style={{ fontWeight: "bold", fontSize: "1em" }}
                   msg="Welcome to the EcoScript Interactive Development Environment (IDE)."
-                  commandPassThrough={async (cmd, print) => {
-                    const command = cmd.join(" "); // Convert the command array to a string
+                  commandPassThrough={async (cmd: string, print: () => void) => {
+                    const command = Array.isArray(cmd) ? cmd.join(" ") : cmd; // Convert the command array to a string
 
                     try {
                       const response = await axios.post(
@@ -106,9 +106,12 @@ const EcoScriptIDE: React.FC = () => {
                         }
                       );
 
-                      const output = response.data;
-                      print(output); // Print the output in the terminal
+                      const output2 = response.data;
+                      // @ts-ignore
+                      print(output2); 
+                      
                     } catch (error) {
+                       // @ts-ignore
                       print(`Error executing command: ${error}`);
                     }
                   }}

@@ -1,4 +1,5 @@
-"use client";
+/* eslint-disable react/no-unescaped-entities */
+'use client'
 import React from "react";
 import {
   Box,
@@ -25,7 +26,7 @@ atomOneDark["hljs"] = {
   color: "white",
 };
 const Documentation: React.FC = () => {
-  const codeSnippet = `x := 10;\ny := 20;\nz := x + y;\nPRINT(z);`;
+  const codeSnippet = "x := 10;\ny := 20;\nz := x + y;\nPRINT(z);";
   const codeOutput = "30\nEnergy Consumed: 4\nCarbon Footprint: 0.3950000000000001";
 
   return (
@@ -123,13 +124,17 @@ const Documentation: React.FC = () => {
       </Heading>
       <List mt={4}>
         <ListItem>
-          Arithmetic Operations: Supports basic arithmetic operations like
-          addition, subtraction...
+        Arithmetic Operations: Supports basic arithmetic operations like addition, subtraction, multiplication, and division.
         </ListItem>
         <ListItem>
-          Control Flow: Includes conditional statements like if, else...
+        Control Flow: Includes conditional statements like if, else, and loops like while.
         </ListItem>
-        {/* Add other features here */}
+        <ListItem>
+        Energy Consumption: Calculates the energy consumed during code execution.
+        </ListItem>
+        <ListItem>
+        Carbon Footprint: Estimates the carbon footprint associated with running the code.
+        </ListItem>
       </List>
 
       <Heading as="h3" size="md" mt={8}>
@@ -139,14 +144,14 @@ const Documentation: React.FC = () => {
       <Text mt={4}>Variables</Text>
       <Box borderRadius="10px" overflow="hidden" mt="3">
         <SyntaxHighlighter language="python" style={atomOneDark}>
-          {`x := 10;\ny := 20;`}
+          {"x := 10;\ny := 20;"}
         </SyntaxHighlighter>
       </Box>
 
       <Text mt={4}>Arithmetic</Text>
       <Box borderRadius="10px" overflow="hidden" mt="3">
         <SyntaxHighlighter language="python" style={atomOneDark}>
-          {`z := x + y;`}
+          {"z := x + y;"}
         </SyntaxHighlighter>
       </Box>
 
@@ -160,7 +165,7 @@ const Documentation: React.FC = () => {
       <Text mt={4}>Control Flow (work in progress)</Text>
       <Box borderRadius="10px" overflow="hidden" mt="3">
         <SyntaxHighlighter language="python" style={atomOneDark}>
-          {`if (z > 10) {\n  PRINT(z);\n} else {\n  PRINT(x);\n}`}
+          {"if (z > 10) {\n  PRINT(z);\n} else {\n  PRINT(x);\n}"}
         </SyntaxHighlighter>
       </Box>
 
@@ -190,12 +195,12 @@ const Documentation: React.FC = () => {
       <Text mt={4}>
         <Box borderRadius="10px" overflow="hidden" mt="3">
           <SyntaxHighlighter language="python" style={atomOneDark}>
-            {`git clone https://github.com/KaushalBarhate/Ecoscript`}
+            {"git clone https://github.com/KaushalBarhate/Ecoscript"}
           </SyntaxHighlighter>
         </Box>
         <Box borderRadius="10px" overflow="hidden" mt="3">
           <SyntaxHighlighter language="python" style={atomOneDark}>
-            {`cd Ecoscript-main`}
+            {"cd Ecoscript-main"}
           </SyntaxHighlighter>
         </Box>
         <Box borderRadius="10px" overflow="hidden" mt="3">
