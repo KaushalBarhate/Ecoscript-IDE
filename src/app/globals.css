@@ -25,3 +25,9 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@media (max-width: 500px) {
+  .react-terminal-window-buttons {
+    display: none !important;
+  }
+}

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import Terminal, { ColorMode, TerminalOutput } from 'react-terminal-ui';
 import axios from 'axios';
 
+
 const TerminalController: React.FC = () => {
   const [terminalLineData, setTerminalLineData] = useState([
     <TerminalOutput key={Math.random().toString(36).substring(2,7)}>Welcome to the EcoScript Interactive Development Environment (IDE).</TerminalOutput>
@@ -36,16 +37,19 @@ const TerminalController: React.FC = () => {
   };
 
   return (
-    <div className="container">
+    <div className="container mx-auto overflow-x-auto ">
+    <div className="">
       <Terminal
         name="EcoScript IDE"
         colorMode={ColorMode.Dark}
         prompt=">"
         onInput={handleInput}
         height="500px"
+       
       >
         {terminalLineData}
       </Terminal>
+    </div>
     </div>
   );
 };

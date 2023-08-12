@@ -1,0 +1,6 @@
+@media (max-width: 500px) {
+    .react-terminal-window-buttons {
+      display: none;
+    }
+  }
+  

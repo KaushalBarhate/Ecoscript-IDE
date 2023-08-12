@@ -95,10 +95,13 @@ const EcoScriptIDE: React.FC = () => {
                 overflow="hidden"
                 //   h="400px"
                 resize="vertical"
+                className="w-11/12"
                 //   maxH="400px"
                 //   minH="100px"
               >
-                <TerminalController />
+                <Center>
+                  <TerminalController />
+                </Center>
                 {/* <Terminal
                   color="green"
                   backgroundColor="black"
@@ -133,18 +136,28 @@ const EcoScriptIDE: React.FC = () => {
           </>
         ) : (
           <>
-           <Box overflow="hidden" borderRadius="20px" style={{ backgroundColor: '#252A33' }} >
-  <AceEditor
-    mode="python"
-    theme="monokai"
-    value={code}
-    onChange={setCode}
-    name="EcoScriptEditor"
-    editorProps={{ $blockScrolling: true }}
-    fontSize={18} 
-    style={{ fontWeight: "bold", height: "600px",width:"50vw",backgroundColor: '#252A33' }}
-  />
-</Box>
+            <Box
+              overflow="hidden"
+              borderRadius="20px"
+              style={{ backgroundColor: "#252A33" }}
+              className="w-11/12"
+            >
+              <AceEditor
+                mode="python"
+                theme="monokai"
+                value={code}
+                onChange={setCode}
+                name="EcoScriptEditor"
+                editorProps={{ $blockScrolling: true }}
+                fontSize={18}
+                style={{
+                  fontWeight: "bold",
+                  height: "600px",
+                  width: "50vw",
+                  backgroundColor: "#252A33",
+                }}
+              />
+            </Box>
 
             <Center>
               <Button colorScheme="teal" onClick={handleRunCode} mr={6}>
